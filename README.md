@@ -52,10 +52,80 @@ php --ini
 
 ```
 
-## Start the server
+## Commands of Note
+
+
+### Server Start
 
 ``` javascript
 
 app/console server:start
+
+```
+
+### Create the Database
+
+``` javascript
+
+app/console doctrine:database:create
+
+```
+
+### Create an entity/model
+
+``` javascript
+
+app/console doctrine:generate:entity
+
+```
+
+### Generate CRUD
+
+``` javascript
+
+app/console doctrine:generate:crud
+
+```
+
+### Generate Table/Update the Schema
+
+``` javascript
+
+app/console doctrine:schema:update -force
+
+```
+
+## Project directories/files
+
+### For Database
+
+``` javascript
+
+app/config/parameters.yml.dist
+app/config/parameters.yml
+
+```
+
+### Views
+
+``` javascript
+
+app/Resources/views
+
+```
+
+### Base Twig Template is in
+
+``` javascript
+
+app/Resources/views
+
+```
+
+### Base Home Page is in
+
+``` javascript
+
+app/Resources/views/default
 
 ```
