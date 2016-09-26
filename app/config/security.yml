@@ -1,0 +1,54 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+             algorithm: bcrypt
+             cost: 12
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    # Hard coded test users
+    # username: karl | password: karlpass
+    # username: admin | password: adminpass
+    providers:
+        in_memory:
+            memory:
+                users:
+                    karl:
+                        password: $2y$12$0gekJPZsjKK3LC.DvALTIuTGBOTRc/Pto.A.HIo7tswFO40/sxwCu
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: $2y$12$/dChzB8iXb3qDUkdiYEETOE5tRJuX7ZuNMHIyj9aa3wEbithAe/.6
+                        roles: 'ROLE_ADMIN'
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+
+
+        main:
+            anonymous: ~
+            form_login:
+                 # Info: This redirects to the login route
+                 login_path: login
+                 # Info: This redirects to the login route
+                 check_path: login
+                 default_target_path: dashboard
+
+            # activate different ways to authenticate
+
+
+            http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+          # require ROLE_ADMIN for /admin*
