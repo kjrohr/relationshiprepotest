@@ -129,3 +129,17 @@ app/Resources/views
 app/Resources/views/default
 
 ```
+
+``` javascript
+
+app/Resources/views/default/index.html.twig
+
+```
+
+### CSS files are located in
+
+``` javascript
+
+web/assets/css
+
+```
